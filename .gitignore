@@ -1,0 +1,43 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+
+# Virtual environment
+.venv/
+venv/
+env/
+ENV/
+
+# Django
+*.log
+local_settings.py
+db.sqlite3
+db.sqlite3-journal
+media/
+staticfiles/
+
+# Environment variables (خیلی مهم — هیچ‌وقت .env رو کامیت نکن)
+.env
+.env.local
+.env.*.local
+
+# Migrations (اختیاری — بعضی تیم‌ها Migration ها رو کامیت می‌کنن، بعضی نه)
+# اگه می‌خوای Migration ها رو Track کنی، این خط رو حذف کن
+# */migrations/*.py
+# !*/migrations/__init__.py
+
+# IDE
+.vscode/
+.idea/
+*.swp
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Coverage / Testing
+.coverage
+htmlcov/
+.pytest_cache/
