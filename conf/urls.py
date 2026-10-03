@@ -7,4 +7,5 @@ urlpatterns = [
     path('',include("content.urls",namespace='home')),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
     path('api/accounts/', include('accounts.urls', namespace='accounts')),
+    path('products/',include('catalog.urls',namespace='catalog'))
 ]

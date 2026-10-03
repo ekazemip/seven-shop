@@ -1,5 +1,6 @@
 from django.db import models
 
+
 class Category(models.Model):
     title = models.CharField(max_length=25)
     parent = models.ForeignKey(
@@ -37,16 +38,30 @@ class Product(models.Model):
 
 class ProductImage(models.Model):
     product = models.ForeignKey(
-        "Product", on_delete=models.CASCADE, related_name="images"
+        "Product",
+        on_delete=models.CASCADE,
+        related_name="images",
+    )
+    variant = models.ForeignKey(
+        "ProductVariant",
+        on_delete=models.CASCADE,
+        null=True,
+        blank=True,
+        related_name="images",
     )
     image = models.ImageField(upload_to="products/", blank=True, null=True)
 
 
+# * Attributes per categoury
 class AttributeDefinition(models.Model):
     title = models.CharField(max_length=50)
-    category = models.ForeignKey("Category",on_delete=models.CASCADE, related_name="attributes")
+    category = models.ForeignKey(
+        "Category", on_delete=models.CASCADE, related_name="attributes"
+    )
+
 
 class ProductAttributeValue(models.Model):
+    # * Attributes for Variants
     product = models.ForeignKey(
         "Product", on_delete=models.CASCADE, related_name="attribute_values"
     )
@@ -64,22 +79,40 @@ class ProductAttributeValue(models.Model):
                 name="unique_product_attribute_value",
             )
         ]
+
+
 class VariantAttribute(models.Model):
     title = models.CharField(max_length=50)
-    
+
+
 class VariantValue(models.Model):
-    attribute = models.ForeignKey("VariantAttribute", on_delete=models.CASCADE, related_name='values')
+    attribute = models.ForeignKey(
+        "VariantAttribute", on_delete=models.CASCADE, related_name="values"
+    )
     value = models.CharField(
         max_length=50,
     )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["attribute", "value"],
+                name="unique_variant_value",
+            )
+        ]
+
+
 class ProductVariant(models.Model):
     values = models.ManyToManyField(
         "VariantValue",
-        related_name="values",
+        through="VariantAttributeAssignment",
+        related_name="variants",
     )
-    product = models.ForeignKey("Product",on_delete=models.PROTECT , related_name="variants")
+    product = models.ForeignKey(
+        "Product", on_delete=models.PROTECT, related_name="variants"
+    )
     stock = models.PositiveIntegerField(default=0)
-    sku = models.CharField(max_length=50,unique=True)
+    sku = models.CharField(max_length=50, unique=True)
     base_price = models.DecimalField(max_digits=15, decimal_places=0)
     discount_price = models.DecimalField(
         max_digits=15,
@@ -87,3 +120,22 @@ class ProductVariant(models.Model):
         null=True,
         blank=True,
     )
+
+
+class VariantAttributeAssignment(models.Model):
+    variant = models.ForeignKey(
+        "ProductVariant", on_delete=models.CASCADE, related_name="assignments"
+    )
+    attribute = models.ForeignKey(
+        "VariantAttribute", on_delete=models.CASCADE, related_name="assignments"
+    )
+    value = models.ForeignKey(
+        "VariantValue", on_delete=models.CASCADE, related_name="assignments"
+    )
+
+    class Meta:
+        constraints = [
+            models.UniqueConstraint(
+                fields=["variant", "attribute"], name="unique_attribute_per_variant"
+            )
+        ]
