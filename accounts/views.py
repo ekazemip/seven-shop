@@ -5,10 +5,14 @@ from common.responses import error_helper, success_helper
 from .exceptions import InvalidOTP, OTPAttemptsExceeded, OTPExpired, OTPNotFound
 from .serializers import OTPRequestSerializer, OTPVerificationSerializer
 from .services import request_otp, verify_otp
+from rest_framework.throttling import ScopedRateThrottle
 
 
 class RequestOTPCode(APIView):
     # permission_classes = [AllowAny]
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "otp_request"
+
     def post(self, request):
         serializer = OTPRequestSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
@@ -28,11 +32,14 @@ class RequestOTPCode(APIView):
             return error_helper(
                 message=" آخرین کد ارسالی هنوز معتبر است ، لطفا از آن استفاده کنید.",
                 code="FOUND_ACTIVE_CODE",
-                data={"expires_at": active_code} ,
+                data={"expires_at": active_code},
             )
 
 
 class VerifyOTPCode(APIView):
+    throttle_classes = [ScopedRateThrottle]
+    throttle_scope = "otp_verify"
+
     def post(self, request):
         serializer = OTPVerificationSerializer(data=request.data)
         serializer.is_valid(raise_exception=True)
