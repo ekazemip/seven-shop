@@ -148,6 +148,7 @@ REST_FRAMEWORK = {
     "PAGE_SIZE": 20,
     "EXCEPTION_HANDLER": "common.exceptions.custom_exception_handler",
     "DEFAULT_THROTTLE_RATES": {"otp_request": "3/min","otp_verify": "5/min"},
+    "DEFAULT_PERMISSION_CLASSES":['rest_framework.permissions.IsAuthenticated']
 }
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),

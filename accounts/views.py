@@ -6,10 +6,10 @@ from .exceptions import InvalidOTP, OTPAttemptsExceeded, OTPExpired, OTPNotFound
 from .serializers import OTPRequestSerializer, OTPVerificationSerializer
 from .services import request_otp, verify_otp
 from rest_framework.throttling import ScopedRateThrottle
-
+from rest_framework.permissions import AllowAny
 
 class RequestOTPCode(APIView):
-    # permission_classes = [AllowAny]
+    permission_classes = [AllowAny]
     throttle_classes = [ScopedRateThrottle]
     throttle_scope = "otp_request"
 
@@ -37,6 +37,7 @@ class RequestOTPCode(APIView):
 
 
 class VerifyOTPCode(APIView):
+    permission_classes = [AllowAny]
     throttle_classes = [ScopedRateThrottle]
     throttle_scope = "otp_verify"
 
