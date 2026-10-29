@@ -1,7 +1,8 @@
 import type { Metadata } from 'next';
 import { Geist, Geist_Mono, Vazirmatn } from 'next/font/google';
 import './globals.css';
-
+import AppThemeProvider from '@/components/theme-provider';
+import ThemeToggle from '@/components/theme-toggle';
 const geistSans = Geist({
   variable: '--font-geist-sans',
   subsets: ['latin'],
@@ -26,8 +27,16 @@ export default function RootLayout({ children }: LayoutProps<'/'>) {
       lang="fa"
       className={`${geistSans.variable} ${geistMono.variable} ${vazirmatn.variable} h-full antialiased`}
       dir="rtl"
+      suppressHydrationWarning 
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <AppThemeProvider>
+          <ThemeToggle/>
+          {children}
+        </AppThemeProvider>
+
+        
+        </body>
     </html>
   );
 }
