@@ -4,17 +4,21 @@ export default function Input({
   placeholder,
   disabled = false,
   error,
+  name,
+  hideLabel=false,
 }: {
   id: string;
   label: string;
   placeholder?: string;
   disabled?: boolean;
   error?: string;
+  name?: string;
+  hideLabel?:boolean;
 }){
   const borderClasses = error ? 'border-danger' : 'border-border';
   return (
     <div className="flex flex-col gap-2">
-      <label htmlFor={id}>{label}</label>
+      <label htmlFor={id} className={`${hideLabel?"sr-only":""}`}>{label}</label>
       <input
         aria-invalid={Boolean(error)}
         id={id}
@@ -22,6 +26,7 @@ export default function Input({
         disabled={disabled}
         placeholder={placeholder}
         aria-describedby={error ? `${id}-error` : undefined}
+        name={name}
       />
       {error && (
         <p id={`${id}-error`} className="text-danger">

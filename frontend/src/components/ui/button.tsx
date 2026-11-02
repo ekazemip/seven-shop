@@ -4,13 +4,19 @@ export default function Button({
   variant = 'primary',
   disabled = false,
   onClick,
-  'aria-label' :ariaLabel
+  'aria-label' :ariaLabel,
+  type ='button',
+  'aria-expanded':ariaExpanded,
+  'aria-controls':ariaControls
 }: {
   children: ReactNode;
   variant?: 'primary' | 'secondary';
   disabled?: false | true;
   onClick?: () => void;
   'aria-label'?:string;
+  type ?: 'button' | 'submit' | 'reset';
+  "aria-expanded"?:boolean;
+  "aria-controls"?:string;
 }) {
   let variantClasses;
   if (variant === 'primary') {
@@ -24,10 +30,12 @@ export default function Button({
     <button
       className={`inline-flex items-center justify-center gap-2 min-h-12 px-4 py-2 rounded-lg font-medium ${variantClasses} disabled:opacity-50 disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary
 `}
-      type="button"
+      type={type}
       disabled={disabled}
       onClick={onClick}
       aria-label={ariaLabel}
+      aria-expanded={ariaExpanded}
+      aria-controls={ariaControls}
     >
       {children}
     </button>
