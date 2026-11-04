@@ -6,7 +6,7 @@ export default function MobileBottomNav() {
   const pathname = usePathname();
   return (
     <nav
-      className=" glass border rounded-3xl shadow-lg text-foreground fixed inset-x-4 bottom-4 z-40 lg:hidden grid grid-cols-4 gap-1 p-2 mobile-nav"
+      className=" glass border rounded-3xl shadow-lg text-text fixed inset-x-4 bottom-4 z-40 lg:hidden grid grid-cols-4 gap-1 p-2 mobile-nav"
       aria-label="ناوبری اصلی موبایل"
     >
       <Link

@@ -6,23 +6,27 @@ export default function SiteFooter() {
         <p>سون کالا ــ آسایش،درانتخاب‌های شما</p>
         <div>
           <p>دسترسی سریع</p>
+          <hr className='w-23'/>
+          <br />
           <nav className="flex flex-col gap-2" aria-label="دسترسی سریع">
-            <Link href={'/'}>سون کالا</Link>
-            <Link href={'/products'}>محصولات</Link>
-            <Link href={'/wishlist'}>علاقه‌مندی ها</Link>
-            <Link href={'/login'}>پروفایل کاربری</Link>
+            <Link className='focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary' href={'/'}>سون کالا</Link>
+            <Link className='focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary' href={'/products'}>محصولات</Link>
+            <Link className='focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary' href={'/wishlist'}>علاقه‌مندی ها</Link>
+            <Link className='focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary' href={'/login'}>پروفایل کاربری</Link>
           </nav>
         </div>
         <div>
           <p>خدمات مشتریان</p>
+          <hr className='w-26'/>
+          <br />
           <nav className="flex flex-col gap-2" aria-label="خدمات مشتریان">
-            <Link href={'/contact'}>تماس با ما</Link>
-            <Link href={'/faq'}>سؤالات متداول</Link>
+            <Link className='focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary' href={'/contact'}>تماس با ما</Link>
+            <Link className='focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary' href={'/faq'}>سؤالات متداول</Link>
           </nav>
         </div>
       </div>
-      <div>
-        <p className="items-center">تمام حقوق این سایت متعلق به سون کالا است.</p>
+      <div className='flex items-center justify-center'>
+        <p className="text-gray-400 text-center">تمام حقوق این سایت متعلق به سون کالا است.</p>
       </div>
     </footer>
   );

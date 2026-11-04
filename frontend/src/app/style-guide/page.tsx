@@ -2,6 +2,14 @@ import Button from '@/components/ui/button';
 import Card from '@/components/ui/card';
 import Input from '@/components/ui/input';
 import { Search, ShoppingCart, User } from 'lucide-react';
+import Badge from '@/components/ui/badge';
+import Chip from '@/components/ui/chip';
+import ChipDemo from '@/components/examples/chip-demo';
+import Alert from '@/components/ui/alert';
+import QuantityDemo from '@/components/examples/quantity-demo';
+import CheckboxDemo from '@/components/examples/checkbox-demo';
+import SwitchDemo from '@/components/examples/switch-demo';
+import ProductCard from '@/components/products/product-card';
 export default function StyleGuidePage() {
   return (
     <main className="p-4 flex flex-col gap-8">
@@ -12,15 +20,23 @@ export default function StyleGuidePage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <div className="p-4 bg-primary text-on-primary">رنگ اصلی</div>
           <div className="p-4 bg-primary-soft text-primary">زمینه تاکیدی</div>
-          <div className="p-4 bg-surface text-foreground">سطح کارت</div>
+          <div className="p-4 bg-surface text-text">سطح کارت</div>
         </div>
       </section>
       <section className="flex flex-col gap-4">
         <h2>تایپوگرافی</h2>
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <h3 className="font-bold text-2xl">انتخاب مطمئن برای خانه‌ی شما</h3>
-          <p className="text-base">محصولات لوازم خانگی را بررسی و انتخاب کنید</p>
-          <p className="text-muted text-sm">اطلاعات ارسال در مرحله‌ی بعد نمایش داده می‌شود</p>
+        <div className="flex flex-col gap-4 ">
+          <p className="text-body">انتخاب مطمئن برای خانه‌ی شما</p>
+          <p className="text-label">محصولات لوازم خانگی را بررسی و انتخاب کنید</p>
+          <p className="text-display">لوازم خانگی مطمئن</p>
+          <p className="text-heading-1">پرفروش‌ترین یخچال‌ها</p>
+          <p className="text-heading-2">ماشین لباسشویی ۹ کیلویی</p>
+          <p className="text-heading-3">ضمانت اصالت و سلامت کالا</p>
+          <p className="text-body-lg">ارسال سریع به تهران و ارسال مطمئن به سراسر کشور.</p>
+          <p className="text-body">همه کالاها با گارانتی معتبر و فاکتور رسمی عرضه می‌شوند.</p>
+          <p className="text-label">برند سازنده</p>
+          <p className="text-caption">کد کالا: ۱۲۰۴۵</p>
+          <p className="text-price">۸۴٬۹۰۰٬۰۰۰ تومان</p>
         </div>
       </section>
       <section className="flex flex-col gap-4">
@@ -35,6 +51,24 @@ export default function StyleGuidePage() {
           <Button variant="secondary" disabled={true}>
             انصراف
           </Button>
+
+          <Button variant="accent">
+            accent
+            <ShoppingCart size={20}></ShoppingCart>
+          </Button>
+          <Button variant="accent" disabled={true}>
+            accent
+            <ShoppingCart size={20}></ShoppingCart>
+          </Button>
+
+          <Button variant="ghost">
+            ghost
+            <ShoppingCart size={20}></ShoppingCart>
+          </Button>
+          <Button variant="ghost" disabled={true}>
+            ghost
+            <ShoppingCart size={20}></ShoppingCart>
+          </Button>
         </div>
       </section>
       <section className="flex flex-col gap-4">
@@ -43,6 +77,32 @@ export default function StyleGuidePage() {
           <Input id="phone" label="phone" placeholder="phone number" />
           <Input id="name" label="name" placeholder="name" disabled={true} />
           <Input id="code" label="code" error="your code must be 10 " />
+        </div>
+      </section>
+      <section className="flex flex-col gap-4">
+        <h2>بج ها</h2>
+        <div className="flex flex-wrap gap-2">
+          <Badge variant="accent">20% تخفیف</Badge>
+          <Badge variant="success">موجود</Badge>
+          <Badge variant="warning">موجودی محدود</Badge>
+          <Badge variant="danger">ناموجود</Badge>
+        </div>
+      </section>
+      <section className="flex flex-col gap-4">
+        <h2>چیپ ها</h2>
+        <div className="flex flex-wrap gap-2">
+          <Chip selected={true}>یخجال و فریزر</Chip>
+          <Chip selected={false}>یخجال و فریزر</Chip>
+          <ChipDemo />
+        </div>
+      </section>
+      <section className="flex flex-col gap-4">
+        <h2>الارم ها</h2>
+        <div className="flex flex-col gap-4">
+          <Alert variant="warning">موجودی این کالا محدود است.</Alert>
+          <Alert variant="success">سفارش شما ثبت شد.</Alert>
+          <Alert variant="info">وضعیت سفارش از بخش حساب کاربری قابل پیگیری است.</Alert>
+          <Alert variant="danger">ثبت سفارش ناموفق بود. دوباره تلاش کنید.</Alert>
         </div>
       </section>
       <section className="flex flex-col gap-4">
@@ -60,15 +120,56 @@ export default function StyleGuidePage() {
       </section>
       <section className="flex flex-col gap-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <Button variant="secondary" aria-label='جست‌و‌جو'>
-            <Search ></Search>
+          <Button variant="secondary" aria-label="جست‌و‌جو">
+            <Search></Search>
           </Button>
-          <Button variant="secondary" aria-label='سبد خرید'>
+          <Button variant="secondary" aria-label="سبد خرید">
             <ShoppingCart></ShoppingCart>
           </Button>
-          <Button variant="secondary" aria-label='حساب کاربری'>
+          <Button variant="secondary" aria-label="حساب کاربری">
             <User></User>
           </Button>
+        </div>
+      </section>
+      <section className="flex flex-col gap-4">
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+          <QuantityDemo></QuantityDemo>
+          <CheckboxDemo></CheckboxDemo>
+          <SwitchDemo></SwitchDemo>
+        </div>
+      </section>
+      <section className="flex flex-col gap-4">
+        <div className="w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 ">
+          <ProductCard
+            title="یخچال فریزر ساید بای ساید ۳۲ فوت"
+            category="یخچال و فریزر"
+            price={84900000}
+            originalPrice={106125000}
+            imageSrc="/images/brand/fridge.svg"
+            inStock={true}
+            rating={4.7}
+            reviewCount={128}
+          ></ProductCard>
+
+          <ProductCard
+            title="یخچال فریزر ساید بای ساید ۲۸ فوت"
+            category="یخچال و فریزر"
+            price={82100000}
+            imageSrc="/images/brand/fridge.svg"
+            inStock={true}
+            rating={4.7}
+            reviewCount={128}
+          ></ProductCard>
+
+          <ProductCard
+            title="یخچال فریزر ساید بای ساید ۳۶ فوت"
+            category="یخچال و فریزر"
+            price={106125000}
+            imageSrc="/images/brand/fridge.svg"
+            inStock={false}
+            rating={4.7}
+            reviewCount={128}
+          ></ProductCard>
         </div>
       </section>
       <section>
@@ -81,8 +182,8 @@ export default function StyleGuidePage() {
                 className="absolute inset-0 pointer-events-none bg-linear-to-br from-white/20 to-transparent"
               ></div>
               <div className="relative">
-                <h3 className="text-foreground">انتخابی برای خانهی شما</h3>
-                <p className="text-foreground">یک توضیح کوتاه </p>
+                <h3 className="text-text">انتخابی برای خانهی شما</h3>
+                <p className="text-text">یک توضیح کوتاه </p>
               </div>
             </div>
           </div>

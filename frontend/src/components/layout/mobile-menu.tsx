@@ -46,13 +46,13 @@ export default function MenuToggle() {
         <Menu size={20}></Menu>
       </Button>
       <nav
-        className={`flex flex-col gap-2 p-4 text-foreground rounded-2xl absolute top-full border start-0 mt-2 z-50 w-56 shadow-lg glass transition-[opacity,translate,scale] duration-200 ease-out origin-top-right motion-reduce:transition-none ${isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
+        className={`flex flex-col gap-2 p-4 text-text rounded-2xl absolute top-full border start-0 mt-2 z-50 w-56 shadow-lg glass transition-[opacity,translate,scale] duration-200 ease-out origin-top-right motion-reduce:transition-none ${isOpen ? 'opacity-100 translate-y-0 scale-100' : 'opacity-0 -translate-y-2 scale-95 pointer-events-none'}`}
         aria-label="منوی موبایل"
         inert={!isOpen}
         id="mobile-menu-panel"
       >
         <Link
-          className="inline-flex gap-2 items-center justify-start min-h-12 min-w-12 rounded-lg w-full px-3"
+          className="inline-flex gap-2 items-center justify-start min-h-12 min-w-12 rounded-lg w-full px-3 className='focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'"
           href={'/'}
           aria-label="خانه"
           onClick={handleClose}
@@ -61,7 +61,7 @@ export default function MenuToggle() {
           <span>خانه</span>
         </Link>
         <Link
-          className="inline-flex gap-2 items-center justify-start min-h-12 min-w-12 rounded-lg w-full px-3"
+          className="inline-flex gap-2 items-center justify-start min-h-12 min-w-12 rounded-lg w-full px-3 className='focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'"
           href={'/wishlist'}
           aria-label="علاقه مندی‌ها"
           onClick={handleClose}
@@ -70,7 +70,7 @@ export default function MenuToggle() {
           <span>علاقه مندی‌ها</span>
         </Link>
         <Link
-          className="inline-flex gap-2 items-center justify-start min-h-12 min-w-12 rounded-lg relative w-full px-3"
+          className="inline-flex gap-2 items-center justify-start min-h-12 min-w-12 rounded-lg relative w-full px-3 className='focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary'"
           href={'/products'}
           aria-label="محصولات"
           onClick={handleClose}
