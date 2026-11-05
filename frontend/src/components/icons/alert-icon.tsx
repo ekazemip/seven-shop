@@ -1,0 +1,29 @@
+import type { SVGProps } from "react";
+const SvgAlertIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={24}
+    height={24}
+    viewBox="0 0 44 48"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path
+      d="M22.042 6.5H23.7955H24.3236C26.7799 6.5 28.656 8.69325 28.2753 11.1199L26.0792 25.1199C25.7739 27.0659 24.0973 28.5 22.1275 28.5H21.9437C19.9795 28.5 18.306 27.0739 17.9943 25.1346L15.7447 11.1346C15.3541 8.70346 17.2317 6.5 19.6941 6.5H20.2886H22.042Z"
+      strokeWidth={3}
+      stroke="rgb(var(--text))"
+    />
+    <mask id="stroke0_29_199" fill="white">
+      <path d="M22 42.5C19.2386 42.5 17 40.2614 17 37.5C17 34.7386 19.2386 32.5 22 32.5C24.7614 32.5 27 34.7386 27 37.5C27 40.2614 24.7614 42.5 22 42.5Z" />
+    </mask>
+    <path
+      d="M17 37.5C17 40.2614 19.2386 42.5 22 42.5C24.7614 42.5 27 40.2614 27 37.5C27 34.7386 24.7614 32.5 22 32.5C19.2386 32.5 17 34.7386 17 37.5Z"
+      strokeWidth={4}
+      stroke="rgb(var(--icon-accent))"
+      mask="url(#stroke0_29_199)"
+    />
+  </svg>
+);
+export default SvgAlertIcon;

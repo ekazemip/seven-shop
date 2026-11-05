@@ -3,7 +3,7 @@ import { ThemeProvider } from 'next-themes';
 import type { ReactNode } from 'react';
 export default function AppThemeProvider({ children }: {children:ReactNode}) {
   return (
-    <ThemeProvider attribute="data-theme" defaultTheme="system" enableSystem={true}>
+    <ThemeProvider attribute="class" defaultTheme="dark" enableSystem={true}>
       {children}
     </ThemeProvider>
   );

@@ -1,0 +1,40 @@
+import type { SVGProps } from "react";
+const SvgVacuumIcon = (props: SVGProps<SVGSVGElement>) => (
+  <svg
+    width={24}
+    height={24}
+    viewBox="0 0 48 48"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    aria-hidden="true"
+    focusable="false"
+    {...props}
+  >
+    <path
+      d="M13 24H25C28.866 24 32 27.134 32 31C32 34.866 28.866 38 25 38H13C9.13401 38 6 34.866 6 31C6 27.134 9.13401 24 13 24Z"
+      strokeWidth={4}
+      strokeLinejoin="round"
+      stroke="rgb(var(--text))"
+    />
+    <path
+      d="M16.4 40C16.4 41.3255 15.3255 42.4 14 42.4C12.6745 42.4 11.6 41.3255 11.6 40C11.6 38.6745 12.6745 37.6 14 37.6C15.3255 37.6 16.4 38.6745 16.4 40Z"
+      strokeWidth={4}
+      stroke="rgb(var(--icon-accent))"
+    />
+    <path
+      d="M32 28H37C38.3261 28 39.5979 27.4732 40.5355 26.5355C41.4732 25.5979 42 24.3261 42 23V8"
+      strokeWidth={4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      stroke="rgb(var(--text))"
+    />
+    <path
+      d="M37 8H44"
+      strokeWidth={4}
+      strokeLinecap="round"
+      strokeLinejoin="round"
+      stroke="rgb(var(--icon-accent))"
+    />
+  </svg>
+);
+export default SvgVacuumIcon;

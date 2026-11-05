@@ -32,13 +32,15 @@ export default function Button({
       'bg-accent border-transparent text-on-accent enabled:hover:bg-accent-hover enabled:active:bg-accent-hover';
   } else if (variant === 'ghost') {
     variantClasses =
-      'bg-transparent border-transparent text-link enabled:hover:bg-primary-soft enabled:active:bg-overlay';
+      'bg-transparent border-transparent text-link enabled:hover:bg-soft enabled:active:bg-overlay';
   }
 
   return (
     <button
-      className={`${className} inline-flex items-center justify-center gap-2 min-h-12 px-4 py-2 rounded-lg text-label enabled:cursor-pointer ${variantClasses} border disabled:bg-raised disabled:text-text-disabled disabled:border-border disabled:cursor-not-allowed focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link transition-colors duration-150
-`}
+      className={` inline-flex items-center justify-center gap-2 min-h-12 px-4 py-2 rounded-md text-button enabled:cursor-pointer
+        ${variantClasses} border disabled:bg-raised disabled:text-disabled disabled:border-border disabled:cursor-not-allowed 
+        focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-link transition-colors duration-150
+        ${className}`}
       type={type}
       disabled={disabled}
       onClick={onClick}

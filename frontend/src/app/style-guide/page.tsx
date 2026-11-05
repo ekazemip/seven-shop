@@ -1,7 +1,9 @@
 import Button from '@/components/ui/button';
 import Card from '@/components/ui/card';
 import Input from '@/components/ui/input';
-import { Search, ShoppingCart, User } from 'lucide-react';
+import CartIcon from '@/components/icons/cart-icon';
+import SearchIcon from '@/components/icons/search-icon';
+import ProfileIcon from '@/components/icons/profile-icon';
 import Badge from '@/components/ui/badge';
 import Chip from '@/components/ui/chip';
 import ChipDemo from '@/components/examples/chip-demo';
@@ -10,6 +12,7 @@ import QuantityDemo from '@/components/examples/quantity-demo';
 import CheckboxDemo from '@/components/examples/checkbox-demo';
 import SwitchDemo from '@/components/examples/switch-demo';
 import ProductCard from '@/components/products/product-card';
+
 export default function StyleGuidePage() {
   return (
     <main className="p-4 flex flex-col gap-8">
@@ -19,7 +22,7 @@ export default function StyleGuidePage() {
         <h2>رنگ ها</h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <div className="p-4 bg-primary text-on-primary">رنگ اصلی</div>
-          <div className="p-4 bg-primary-soft text-primary">زمینه تاکیدی</div>
+          <div className="p-4 bg-soft text-link">زمینه تاکیدی</div>
           <div className="p-4 bg-surface text-text">سطح کارت</div>
         </div>
       </section>
@@ -37,6 +40,8 @@ export default function StyleGuidePage() {
           <p className="text-label">برند سازنده</p>
           <p className="text-caption">کد کالا: ۱۲۰۴۵</p>
           <p className="text-price">۸۴٬۹۰۰٬۰۰۰ تومان</p>
+          <p className="text-body-sm">یخچال مناسب بالای ۱۰۰ میلیون تومان</p>
+          <p className="text-button"> ثبت نام</p>
         </div>
       </section>
       <section className="flex flex-col gap-4">
@@ -44,7 +49,7 @@ export default function StyleGuidePage() {
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <Button>
             افزودن به سبد خرید
-            <ShoppingCart size={20}></ShoppingCart>
+            <CartIcon></CartIcon>
           </Button>
           <Button variant="secondary">انصراف</Button>
           <Button disabled={true}>افزودن</Button>
@@ -54,20 +59,20 @@ export default function StyleGuidePage() {
 
           <Button variant="accent">
             accent
-            <ShoppingCart size={20}></ShoppingCart>
+            <CartIcon></CartIcon>
           </Button>
           <Button variant="accent" disabled={true}>
             accent
-            <ShoppingCart size={20}></ShoppingCart>
+            <CartIcon></CartIcon>
           </Button>
 
           <Button variant="ghost">
             ghost
-            <ShoppingCart size={20}></ShoppingCart>
+            <CartIcon></CartIcon>
           </Button>
           <Button variant="ghost" disabled={true}>
             ghost
-            <ShoppingCart size={20}></ShoppingCart>
+            <CartIcon></CartIcon>
           </Button>
         </div>
       </section>
@@ -121,13 +126,13 @@ export default function StyleGuidePage() {
       <section className="flex flex-col gap-4">
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
           <Button variant="secondary" aria-label="جست‌و‌جو">
-            <Search></Search>
+            <SearchIcon></SearchIcon>
           </Button>
           <Button variant="secondary" aria-label="سبد خرید">
-            <ShoppingCart></ShoppingCart>
+            <CartIcon></CartIcon>
           </Button>
           <Button variant="secondary" aria-label="حساب کاربری">
-            <User></User>
+            <ProfileIcon></ProfileIcon>
           </Button>
         </div>
       </section>
@@ -145,7 +150,6 @@ export default function StyleGuidePage() {
             category="یخچال و فریزر"
             price={84900000}
             originalPrice={106125000}
-            imageSrc="/images/brand/fridge.svg"
             inStock={true}
             rating={4.7}
             reviewCount={128}
@@ -155,7 +159,6 @@ export default function StyleGuidePage() {
             title="یخچال فریزر ساید بای ساید ۲۸ فوت"
             category="یخچال و فریزر"
             price={82100000}
-            imageSrc="/images/brand/fridge.svg"
             inStock={true}
             rating={4.7}
             reviewCount={128}
@@ -165,7 +168,6 @@ export default function StyleGuidePage() {
             title="یخچال فریزر ساید بای ساید ۳۶ فوت"
             category="یخچال و فریزر"
             price={106125000}
-            imageSrc="/images/brand/fridge.svg"
             inStock={false}
             rating={4.7}
             reviewCount={128}
@@ -175,7 +177,7 @@ export default function StyleGuidePage() {
       <section>
         <h2>سطح شیشه ای </h2>
         <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-          <div className="p-8 bg-primary rounded-2xl bg-linear-to-br relative from-primary to-primary-soft overflow-hidden ">
+          <div className="p-8 bg-primary rounded-2xl bg-linear-to-br relative from-primary to-soft overflow-hidden ">
             <div className="glass p-6 rounded-2xl border  shadow-md   relative overflow-hidden ">
               <div
                 aria-hidden="true"

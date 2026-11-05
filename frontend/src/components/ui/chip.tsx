@@ -9,10 +9,10 @@ export default function Chip({
   onClick?: () => void;
 }) {
   let styleClasses;
-  if (selected){
-    styleClasses = 'bg-primary-soft text-link border-primary-soft-border'
-  }else{
-    styleClasses = 'bg-transparent text-text-secondary border-border-strong'
+  if (selected) {
+    styleClasses = 'bg-soft text-link border-soft-border';
+  } else {
+    styleClasses = 'bg-transparent text-text-2 border-border-strong';
   }
   return (
     <button

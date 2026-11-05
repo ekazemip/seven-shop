@@ -1,0 +1,14 @@
+{
+  "typescript": true,
+  "jsxRuntime": "automatic",
+  "icon": 24,
+  "svgo": false,
+  "replaceAttrValues": {
+    "#EEF3EE": "rgb(var(--text))",
+    "#FFC857": "rgb(var(--icon-accent))"
+  },
+  "svgProps": {
+    "aria-hidden": "true",
+    "focusable": "false"
+  }
+}

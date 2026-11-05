@@ -2,7 +2,7 @@ export default function Home() {
   return (
     <div className="flex flex-col flex-1 items-center justify-center bg-bg font-sans ">
       <main className="flex flex-1 w-full max-w-full flex-col items-center justify-between py-32 px-16 bg-surface  sm:items-start">
-        <div className="bg-primary-soft text-primary">
+        <div className="bg-soft text-link">
           <h1>ضمانت اصالت کالا</h1>
         </div>
         <div className="flex flex-col items-center gap-6 text-center sm:items-start">
