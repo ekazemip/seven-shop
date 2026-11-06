@@ -43,8 +43,8 @@ export default function SiteHeader() {
     </Link>
   );
   return (
-    <header className=" sticky top-0 z-40 glass">
-      <div className="mx-auto w-full max-w-[1320px] px-4 py-3 md:px-6 lg:px-10 ">
+    <header className=" sticky top-0 z-40 glass ">
+      <div className="mx-auto w-full px-4 py-3 md:px-6 lg:px-10 max-w-[1320px]">
         <div className="items-center justify-between gap-4 hidden lg:flex w-full ">
           <div className=" flex shrink-0 items-center gap-6">
             <Link

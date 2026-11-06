@@ -16,7 +16,7 @@ export default function Checkbox({
     <div className="flex items-center gap-2">
       <label htmlFor={id}>{label}</label>
       <input
-        className="size-5 rounded border border-border-strong accent-primary"
+        className="size-5 rounded-2xl border border-border-strong accent-primary hover:bg-overlay"
         type="checkbox"
         id={id}
         checked={checked}
