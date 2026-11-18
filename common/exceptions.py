@@ -6,6 +6,7 @@ from rest_framework.exceptions import (
     NotAuthenticated,
 )
 from common.responses import error_helper
+from rest_framework_simplejwt.exceptions import InvalidToken
 
 
 def custom_exception_handler(exc, context):
@@ -41,5 +42,13 @@ def custom_exception_handler(exc, context):
             data=exc.detail,
             status_code=exc.status_code,
         )
+    elif isinstance(exc, InvalidToken):
+        return error_helper(
+            message="توکن نامعتبر یا منتقضی شده است .",
+            code="TOKEN_INVALID",
+            data=exc.detail,
+            status_code=exc.status_code,
+        )
+
     else:
         return response

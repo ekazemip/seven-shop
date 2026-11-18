@@ -1,12 +1,14 @@
+from rest_framework.permissions import AllowAny, IsAuthenticated
+from rest_framework.throttling import ScopedRateThrottle
 from rest_framework.views import APIView
+from rest_framework_simplejwt.views import TokenRefreshView
 
 from common.responses import error_helper, success_helper
 
 from .exceptions import InvalidOTP, OTPAttemptsExceeded, OTPExpired, OTPNotFound
 from .serializers import OTPRequestSerializer, OTPVerificationSerializer
 from .services import request_otp, verify_otp
-from rest_framework.throttling import ScopedRateThrottle
-from rest_framework.permissions import AllowAny
+
 
 class RequestOTPCode(APIView):
     permission_classes = [AllowAny]
@@ -74,3 +76,17 @@ class VerifyOTPCode(APIView):
                 code="OTP_MORE_ATTEMPTS",
                 status_code=400,
             )
+
+
+class CurrentUserView(APIView):
+    permission_classes = [IsAuthenticated]
+
+    def get(self, request):
+        user = request.user
+        return success_helper(data={"id": user.id, "phone_number": user.phone_number})
+
+
+class CustomTokenRefreshView(TokenRefreshView):
+    def post(self, request, *args, **kwargs):
+        response = super().post(request, *args, **kwargs)
+        return success_helper(data=response.data, status_code=response.status_code)

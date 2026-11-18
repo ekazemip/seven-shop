@@ -21,6 +21,7 @@ def request_otp(phone_number):
     OTPCode.objects.create(
         phone_number=phone_number, code=new_code, expires_at=expires_at
     )
+    print(new_code)
     return {
         "latest_code": None,
         "new_code": new_code,

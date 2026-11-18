@@ -1,7 +1,8 @@
-from dotenv import load_dotenv
 import os
-from pathlib import Path
 from datetime import timedelta
+from pathlib import Path
+
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -147,8 +148,8 @@ REST_FRAMEWORK = {
     "DEFAULT_PAGINATION_CLASS": "common.pagination.StandardPagination",
     "PAGE_SIZE": 20,
     "EXCEPTION_HANDLER": "common.exceptions.custom_exception_handler",
-    "DEFAULT_THROTTLE_RATES": {"otp_request": "3/min","otp_verify": "5/min"},
-    "DEFAULT_PERMISSION_CLASSES":['rest_framework.permissions.IsAuthenticated']
+    "DEFAULT_THROTTLE_RATES": {"otp_request": "3/min", "otp_verify": "5/min"},
+    "DEFAULT_PERMISSION_CLASSES": ["rest_framework.permissions.IsAuthenticated"],
 }
 SIMPLE_JWT = {
     "ACCESS_TOKEN_LIFETIME": timedelta(minutes=30),

@@ -11,11 +11,12 @@ class Category(models.Model):
         related_name="children",
     )
     slug = models.SlugField(unique=True)
-
+    is_active = models.BooleanField(default=True)
 
 class Brand(models.Model):
     title = models.CharField(max_length=25)
     slug = models.SlugField(unique=True)
+    is_active = models.BooleanField(default=True)
 
 
 class Product(models.Model):

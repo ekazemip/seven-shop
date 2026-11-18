@@ -10,3 +10,11 @@ export type ApiErrorResponse = {
     data: unknown;
   };
 };
+export type TokenPair={
+  access:string;
+  refresh:string;
+}
+
+export type RefreshData={
+  access:string;
+}

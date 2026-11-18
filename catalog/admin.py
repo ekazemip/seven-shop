@@ -1,6 +1,16 @@
 from django.contrib import admin
-from .models import (ProductImage, Category, Brand, Product, VariantAttribute, VariantValue, ProductAttributeValue,
-                     AttributeDefinition, ProductVariant)
+from .models import (
+    ProductImage,
+    Category,
+    Brand,
+    Product,
+    VariantAttribute,
+    VariantValue,
+    ProductAttributeValue,
+    AttributeDefinition,
+    ProductVariant,
+    VariantAttributeAssignment 
+)
 
 
 admin.site.register(ProductImage)
@@ -12,3 +22,4 @@ admin.site.register(VariantValue)
 admin.site.register(ProductVariant)
 admin.site.register(AttributeDefinition)
 admin.site.register(ProductAttributeValue)
+admin.site.register(VariantAttributeAssignment)
