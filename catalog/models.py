@@ -1,4 +1,5 @@
 from django.db import models
+from django.core.exceptions import ValidationError
 
 
 class Category(models.Model):
@@ -13,10 +14,17 @@ class Category(models.Model):
     slug = models.SlugField(unique=True)
     is_active = models.BooleanField(default=True)
 
+    def __str__(self):
+        return self.title
+
+
 class Brand(models.Model):
     title = models.CharField(max_length=25)
     slug = models.SlugField(unique=True)
     is_active = models.BooleanField(default=True)
+
+    def __str__(self):
+        return self.title
 
 
 class Product(models.Model):
@@ -52,6 +60,17 @@ class ProductImage(models.Model):
     )
     image = models.ImageField(upload_to="products/", blank=True, null=True)
 
+    def __str__(self):
+        return f"{self.product}>>{self.variant}>>{self.image}"
+
+    def clean(self):
+        super().clean()
+        if self.variant_id:
+            if self.product_id != self.variant.product_id:
+                raise ValidationError(
+                    {"variant": "واریانت انتخاب شده متعلق به این محصول نیست"}
+                )
+
 
 # * Attributes per categoury
 class AttributeDefinition(models.Model):
@@ -59,6 +78,9 @@ class AttributeDefinition(models.Model):
     category = models.ForeignKey(
         "Category", on_delete=models.CASCADE, related_name="attributes"
     )
+
+    def __str__(self):
+        return f"{self.category} - {self.title}"
 
 
 class ProductAttributeValue(models.Model):
@@ -73,6 +95,15 @@ class ProductAttributeValue(models.Model):
         max_length=50,
     )
 
+    def __str__(self):
+        return f"محصول:{self.product}:{self.attribute}>:{self.value}"
+
+    def clean(self):
+        super().clean()
+        product = getattr(self,"product",None)
+        if product is not None and product.category_id and self.attribute_id:
+            if product.category_id != self.attribute.category_id :
+                raise ValidationError({"attribute" : "ویژگی انتخاب شده متعلق به دسته بندی این محصول نیست ."})
     class Meta:
         constraints = [
             models.UniqueConstraint(
@@ -84,6 +115,9 @@ class ProductAttributeValue(models.Model):
 
 class VariantAttribute(models.Model):
     title = models.CharField(max_length=50)
+
+    def __str__(self):
+        return self.title
 
 
 class VariantValue(models.Model):
@@ -101,6 +135,9 @@ class VariantValue(models.Model):
                 name="unique_variant_value",
             )
         ]
+
+    def __str__(self):
+        return f"{self.attribute} :: {self.value}"
 
 
 class ProductVariant(models.Model):
@@ -122,6 +159,9 @@ class ProductVariant(models.Model):
         blank=True,
     )
 
+    def __str__(self):
+        return f"{self.product} >> {self.sku}"
+
 
 class VariantAttributeAssignment(models.Model):
     variant = models.ForeignKey(
@@ -140,3 +180,14 @@ class VariantAttributeAssignment(models.Model):
                 fields=["variant", "attribute"], name="unique_attribute_per_variant"
             )
         ]
+
+    def __str__(self):
+        return f"{self.variant} >> {self.attribute} >> {self.value}"
+
+    def clean(self):
+        super().clean()
+        if self.attribute_id and self.value_id:
+            if self.attribute_id != self.value.attribute_id:
+                raise ValidationError(
+                    {"value": "مقدار انتخاب شده متعلق به این ویژگی نیست."}
+                )
