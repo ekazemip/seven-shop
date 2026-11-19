@@ -6,7 +6,7 @@ from django.conf import settings
 
 urlpatterns = [
     path("admin/", admin.site.urls),
-    path("", include("content.urls", namespace="home")),
+    path("api/home/", include("content.urls", namespace="home")),
     path("api/token/refresh/", CustomTokenRefreshView.as_view(), name="token_refresh"),
     path("api/accounts/", include("accounts.urls", namespace="accounts")),
     path("api/catalog/", include("catalog.urls", namespace="catalog")),
